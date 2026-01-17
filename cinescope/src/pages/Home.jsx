@@ -42,7 +42,7 @@ export default function Home({ setIsLoggedIn }) {
   };
 
   return (
-    <>
+    <div className="home-page">
       <Navbar
         onSearch={handleSearch}
         user={userEmail}
@@ -59,16 +59,23 @@ export default function Home({ setIsLoggedIn }) {
         ))}
       </div>
 
-      <MovieModal
-        movie={selected}
-        onClose={() => setSelected(null)}
-        onTrailer={handleTrailer}
-      />
+      {selected && (
+        <MovieModal
+          movie={selected}
+          onClose={() => setSelected(null)}
+          onTrailer={handleTrailer}
+        />
+      )}
 
-      <TrailerModal
-        trailerKey={trailer}
-        onClose={() => setTrailer(null)}
-      />
-    </>
+
+      {trailer && (
+        <TrailerModal
+          trailerKey={trailer}
+          onClose={() => setTrailer(null)}
+        />
+      )}
+
+    </div>
   );
+
 }

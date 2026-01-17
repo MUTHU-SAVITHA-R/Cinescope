@@ -1,40 +1,47 @@
+
 .movies {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.85);
+  background: rgba(0, 0, 0, 0.85);
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 200;
 }
 
+
 .image {
-  padding: 40px;
+  padding: 30px;
 }
 
 .image img {
   width: 300px;
   height: 450px;
   object-fit: cover;
+  border-radius: 12px;
 }
 
 .content {
-  color: white;
-  max-width: 400px;
+  color: #ffffff;
+  max-width: 420px;
+  padding: 20px;
+  line-height: 1.6;
 }
+
 
 .ref {
   position: absolute;
-  top: 20px;
-  right: 30px;
+  top: 18px;
+  right: 22px;
   background: linear-gradient(120deg, #0f172a, #1e3a8a, #0f766e);
   color: white;
   border: none;
   font-size: 18px;
   cursor: pointer;
   border-radius: 50%;
-  padding: 5px 10px;
+  padding: 6px 12px;
 }
+
 
 @media (max-width: 768px) {
   .movies {
@@ -52,5 +59,12 @@
 @media (max-width: 480px) {
   .image img {
     width: 100%;
+    height: auto;
+  }
+
+  .content {
+    max-width: 100%;
+    padding: 15px;
+    text-align: center;
   }
 }
