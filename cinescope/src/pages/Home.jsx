@@ -14,10 +14,19 @@ export default function Home({ setIsLoggedIn }) {
   const navigate = useNavigate();
   const userEmail = localStorage.getItem("userEmail");
 
-  useEffect(() => {
-    getAnimatedMovies().then(data => setMovies(data.results));
-  }, []);
+  const [loading, setLoading] = useState(true);
 
+  useEffect(() => {
+    getAnimatedMovies()
+      .then(data => {
+        setMovies(data.results);
+        setLoading(false);
+      })
+      .catch(err => {
+        console.error(err);
+        setLoading(false);
+      });
+  }, []);
   const handleSearch = async (e) => {
     e.preventDefault();
     const query = e.target[0].value;
@@ -50,14 +59,21 @@ export default function Home({ setIsLoggedIn }) {
       />
 
       <div id="boxes">
-        {movies.map(movie => (
-          <MovieCard
-            key={movie.id}
-            movie={movie}
-            onSelect={setSelected}
-          />
-        ))}
+        {loading ? (
+          <p style={{ color: "#555", textAlign: "center" }}>Loading movies...</p>
+        ) : movies.length === 0 ? (
+          <p style={{ color: "#555", textAlign: "center" }}>No movies found.</p>
+        ) : (
+          movies.map(movie => (
+            <MovieCard
+              key={movie.id}
+              movie={movie}
+              onSelect={setSelected}
+            />
+          ))
+        )}
       </div>
+
 
       {selected && (
         <MovieModal
