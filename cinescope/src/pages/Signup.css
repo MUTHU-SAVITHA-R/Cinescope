@@ -9,7 +9,7 @@
   overflow: hidden;
 }
 
-/* Animated gradient */
+
 @keyframes gradientMove {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
@@ -26,7 +26,7 @@
   animation: slideUp 1s ease forwards;
 }
 
-/* Card animation */
+
 @keyframes slideUp {
   from {
     opacity: 0;

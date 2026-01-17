@@ -12,10 +12,7 @@
     align-items: center;
     justify-content: center;
     animation: dance 10s infinite alternate ease-in-out;
-    position: fixed;
-    width: 100%;
-    top: 0;
-    left: 0;
+
    
 }
 
