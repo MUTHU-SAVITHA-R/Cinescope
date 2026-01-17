@@ -1,5 +1,6 @@
 .box {
-  width: 250px;
+  width: 100%;
+  max-width: 250px;  
   height: 320px;
   border-radius: 10px;
   background: white;
@@ -8,6 +9,7 @@
   transition: transform 0.3s ease;
   will-change: transform;
 }
+
 
 .box:hover {
   transform: scale(1.03);
@@ -27,4 +29,15 @@
 .box p {
   margin: 0 10px;
   color: #555;
+}
+@media (max-width: 480px) {
+  #boxes {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .box {
+    width: 90%;   
+    height: auto; 
+  }
 }
