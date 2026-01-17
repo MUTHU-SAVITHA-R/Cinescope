@@ -1,6 +1,6 @@
 .home-page {
   background: #f8fafc;
-  width: 100%;
+  min-height: 100vh; 
 }
 
 #boxes {
@@ -9,9 +9,7 @@
   justify-content: center;
   gap: 20px;
   padding: 20px;
-  width: 100%;
-  position: relative;
-  z-index: 1;
+  min-height: 50vh; 
 }
 
 @media (max-width: 480px) {
@@ -19,4 +17,3 @@
     padding-top: 50px;
   }
 }
-

@@ -1,15 +1,12 @@
 .box {
   width: 100%;
   max-width: 250px;  
-  height: 320px;
   border-radius: 10px;
   background: white;
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   cursor: pointer;
   transition: transform 0.3s ease;
-  will-change: transform;
 }
-
 
 .box:hover {
   transform: scale(1.03);
@@ -19,21 +16,26 @@
   width: 100%;
   height: 200px;
   object-fit: cover;
+  border-radius: 10px 10px 0 0; 
 }
 
 .box h3 {
-  margin: 10px;
+  margin: 10px 0;
   font-size: 1.1rem;
 }
 
 .box p {
-  margin: 0 10px;
+  margin: 0 0 10px 0;
   color: #555;
 }
+
 @media (max-width: 480px) {
-  
   .box {
     width: 90%;   
+    height: auto; 
+  }
+
+  .box img {
     height: auto; 
   }
 }
