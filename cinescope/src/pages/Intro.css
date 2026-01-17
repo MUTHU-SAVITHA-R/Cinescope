@@ -1,0 +1,57 @@
+.intro {
+    height: 100vh;
+    
+    background: linear-gradient(
+        rgba(0,0,0,0.6),
+        rgba(0,0,0,0.6)
+      ),
+      url("https://wallpapers.com/images/featured/movie-9pvmdtvz4cb0xl37.jpg")
+      no-repeat center center/cover;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: dance 10s infinite alternate ease-in-out;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+   
+}
+
+@keyframes dance {
+    0% { transform: scale(1) rotate(0deg); }
+    50% { transform: scale(1.05) rotate(1deg); }
+    100% { transform: scale(1.1) rotate(-1deg); }
+
+}   
+
+.intro-overlay {
+    text-align: center;
+    color: white;
+}
+
+.intro-overlay h1 {
+    font-size: 4rem;
+    margin-bottom: 10px;
+}
+
+.intro-overlay p {
+    font-size: 1.3rem;
+    margin-bottom: 30px;
+}
+
+.enter-btn {
+    padding: 12px 28px;
+    font-size: 1.1rem;
+    background: linear-gradient(120deg, #0f172a, #1e3a8a, #0f766e);
+    color: white;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.enter-btn:hover {
+    box-shadow: 0 0 20px rgba(44, 83, 100, 0.8);
+}

@@ -1,0 +1,74 @@
+import React, { useEffect, useState } from "react";
+import Navbar from "../components/Navbar";
+import MovieCard from "../components/MovieCard";
+import MovieModal from "../components/MovieModal";
+import TrailerModal from "../components/TrailerModal";
+import { getAnimatedMovies, searchMovies, getMovieTrailer } from "../services/tmdb.js";
+import { useNavigate } from "react-router-dom";
+import "./Home.css";
+export default function Home({ setIsLoggedIn }) {
+  const [movies, setMovies] = useState([]);
+  const [selected, setSelected] = useState(null);
+  const [trailer, setTrailer] = useState(null);
+
+  const navigate = useNavigate();
+  const userEmail = localStorage.getItem("userEmail");
+
+  useEffect(() => {
+    getAnimatedMovies().then(data => setMovies(data.results));
+  }, []);
+
+  const handleSearch = async (e) => {
+    e.preventDefault();
+    const query = e.target[0].value;
+    const data = await searchMovies(query);
+    setMovies(data.results);
+  };
+
+  const handleTrailer = async (movieId) => {
+    const video = await getMovieTrailer(movieId);
+    if (video) {
+      setTrailer(video.key);
+    } else {
+      alert("Trailer not available");
+    }
+  };
+
+  const logout = () => {
+    localStorage.removeItem("isLoggedIn");
+    localStorage.removeItem("userEmail");
+    setIsLoggedIn(false);
+    navigate("/login");
+  };
+
+  return (
+    <>
+      <Navbar
+        onSearch={handleSearch}
+        user={userEmail}
+        onLogout={logout}
+      />
+
+      <div id="boxes">
+        {movies.map(movie => (
+          <MovieCard
+            key={movie.id}
+            movie={movie}
+            onSelect={setSelected}
+          />
+        ))}
+      </div>
+
+      <MovieModal
+        movie={selected}
+        onClose={() => setSelected(null)}
+        onTrailer={handleTrailer}
+      />
+
+      <TrailerModal
+        trailerKey={trailer}
+        onClose={() => setTrailer(null)}
+      />
+    </>
+  );
+}

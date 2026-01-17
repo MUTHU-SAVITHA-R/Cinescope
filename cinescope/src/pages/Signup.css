@@ -1,0 +1,101 @@
+.signup-container {
+  min-height: 100vh;
+  background: linear-gradient(120deg, #0f172a, #1e3a8a, #0f766e);
+  background-size: 200% 200%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: gradientMove 8s ease infinite;
+  overflow: hidden;
+}
+
+/* Animated gradient */
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.signup-card {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 42px 36px;
+  width: 360px;
+  border-radius: 22px;
+  text-align: center;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.35);
+  animation: slideUp 1s ease forwards;
+}
+
+/* Card animation */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.signup-card h2 {
+  margin-bottom: 6px;
+  font-size: 26px;
+  color: #0f172a;
+}
+
+.subtitle {
+  font-size: 14px;
+  color: #64748b;
+  margin-bottom: 28px;
+}
+
+.signup-card input {
+  width: 100%;
+  padding: 13px;
+  margin-bottom: 16px;
+  border-radius: 12px;
+  border: 1px solid #cbd5e1;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+.signup-card input:focus {
+  border-color: #0f766e;
+  box-shadow: 0 0 0 3px rgba(15, 118, 110, 0.25);
+}
+
+.signup-card button {
+  width: 100%;
+  padding: 13px;
+  border: none;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #0f766e, #1e40af);
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.signup-card button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(30, 64, 175, 0.4);
+}
+
+.login-text {
+  margin-top: 18px;
+  font-size: 14px;
+  color: #475569;
+}
+
+.login-text a {
+  color: #1e40af;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.login-text a:hover {
+  text-decoration: underline;
+}
