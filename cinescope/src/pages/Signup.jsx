@@ -7,12 +7,24 @@ function Signup({ setIsLoggedIn }) {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const navigate = useNavigate();
+  const rules = {
+    length: password.length >= 8 && password.length <= 20,
+    uppercase: /[A-Z]/.test(password),
+    lowercase: /[a-z]/.test(password),
+    number: /\d/.test(password),
+    special: /[@$!%*?&]/.test(password),
+  };
 
   function handleSignup(e) {
     e.preventDefault();
 
     if (password !== confirmPassword) {
       alert("Passwords do not match!");
+      return;
+    }
+
+    if (Object.values(rules).includes(false)) {
+      alert("Password does not meet all requirements!");
       return;
     }
 
@@ -48,13 +60,39 @@ function Signup({ setIsLoggedIn }) {
           required
         />
 
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
+        <div className="password-container">
+          <input
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+
+
+          {password && Object.values(rules).includes(false) && (
+            <div className="password-rules-card">
+              <ul>
+                <li className={rules.length ? "valid" : "invalid"}>
+                  {rules.length ? "✅" : "❌"} 8–20 characters
+                </li>
+                <li className={rules.uppercase ? "valid" : "invalid"}>
+                  {rules.uppercase ? "✅" : "❌"} At least one uppercase letter
+                </li>
+                <li className={rules.lowercase ? "valid" : "invalid"}>
+                  {rules.lowercase ? "✅" : "❌"} At least one lowercase letter
+                </li>
+                <li className={rules.number ? "valid" : "invalid"}>
+                  {rules.number ? "✅" : "❌"} At least one number
+                </li>
+                <li className={rules.special ? "valid" : "invalid"}>
+                  {rules.special ? "✅" : "❌"} At least one special character (@$!%*?&)
+                </li>
+              </ul>
+            </div>
+          )}
+
+        </div>
 
         <input
           type="password"
