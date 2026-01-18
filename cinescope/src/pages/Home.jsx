@@ -3,7 +3,7 @@ import Navbar from "../components/Navbar";
 import MovieCard from "../components/MovieCard";
 import MovieModal from "../components/MovieModal";
 import TrailerModal from "../components/TrailerModal";
-import { getAnimatedMovies, searchMovies, getMovieTrailer } from "../services/tmdb.js";
+import { getMovies, searchMovies, getMovieTrailer } from "../services/tmdb.js";
 import { useNavigate } from "react-router-dom";
 import "./Home.css";
 export default function Home({ setIsLoggedIn }) {
@@ -17,7 +17,7 @@ export default function Home({ setIsLoggedIn }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    getAnimatedMovies()
+    getMovies()
       .then(data => {
         setMovies(data.results);
         setLoading(false);

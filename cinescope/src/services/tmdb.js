@@ -8,7 +8,7 @@ export const searchMovies = async (query) => {
   return res.json();
 };
 
-export const getAnimatedMovies = async () => {
+export const getMovies = async () => {
   const res = await fetch(
     `${BASE_URL}/discover/movie?api_key=${API_KEY}`
   );
