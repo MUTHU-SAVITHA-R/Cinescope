@@ -12,7 +12,14 @@ export default function Navbar({ onSearch, onLogout }) {
 
   return (
     <div className="top">
-      <h2>CineScope</h2>
+      <div className="title-box">
+          <img
+            src="/cinescope.png"
+            alt="CineScope Logo"
+            className="logo"
+          />
+          <h1>CineScope</h1>
+        </div>
       <div className="search-movies">
       <input
         className="ip"

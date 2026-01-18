@@ -90,3 +90,14 @@
     max-width: 100%;
   }
 }
+.title-box {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  justify-content: center;
+}
+
+.logo {
+  width: 50px;      
+  height: auto;
+}
