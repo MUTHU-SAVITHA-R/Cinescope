@@ -27,12 +27,19 @@ export default function Home({ setIsLoggedIn }) {
         setLoading(false);
       });
   }, []);
-  const handleSearch = async (e) => {
-    e.preventDefault();
-    const query = e.target[0].value;
+  const handleSearch = async (query) => {
+    if (query.trim() === "") {
+      setLoading(true);
+      const data = await getMovies();
+      setMovies(data.results);
+      setLoading(false);
+      return;
+    }
+
     const data = await searchMovies(query);
     setMovies(data.results);
   };
+
 
   const handleTrailer = async (movieId) => {
     const video = await getMovieTrailer(movieId);
